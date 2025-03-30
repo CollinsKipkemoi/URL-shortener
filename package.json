@@ -14,7 +14,8 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.13.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.1",
     "nanoid": "^5.1.5",
     "ts-node-dev": "^2.0.0",
     "url-exist": "^3.0.1",

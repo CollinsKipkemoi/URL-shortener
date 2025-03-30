@@ -17,6 +17,16 @@ app.use(express.json());
 app.use(urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const MONGO_URL = process.env.MONGODB_URL
+if(!MONGO_URL) {
+    throw new Error('MONGODB_URL is not defined')
+}
+
+mongoose.connect(MONGO_URL).then(() => {
+    console.log('Connected to MongoDB!!');
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
 })
